@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>スクロールしたらふわっと表示</title>
+    <style>
+        .container{padding: 30px;}
+        .box{
+            margin-top: 30px;
+            height: 300px;
+            opacity: 0;
+        }
+        .box:nth-child(odd){background-color: #fcc;}
+        .box:nth-child(even){background-color: #ccf;}
+        .show{
+            opacity: 1;
+            transition: all 2s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box b1"></div>
+        <div class="box b2"></div>
+        <div class="box b3"></div>
+        <div class="box b4"></div>
+        <div class="box b5"></div>
+    </div>
+    <script>
+        const box = document.querySelectorAll('.box');
+        const scrollAnimation = function() {
+            const triggerHeight = 300; // 画面下部からの高さ
+            for(let i = 0; i < box.length; i++) {
+                if (window.innerHeight > box[i].getBoundingClientRect().top + triggerHeight) {
+                    box[i].classList.add('show');
+                }
+            }
+        }
+        window.addEventListener('load', scrollAnimation); // 画面をロードしたときに実行
+        window.addEventListener('scroll', scrollAnimation);　// スクロール毎に実行
+    </script>
+</body>
+</html>

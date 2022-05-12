@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .change{
+  color: red;
+}
+    </style>
+</head>
+<body>
+    <div id="app">
+        <p>OSを選択してください。</p>
+        <label for="windows">Windows</label>
+        <input type="checkbox" id="windows" value="Windows" v-model="os">
+        <label for="linux">Linux</label>
+        <input type="checkbox" id="linux" value="Linux" v-model="os">
+        <label for="mac">Mac</label>
+        <input type="checkbox" id="mac" value="Mac" v-model="os">
+        <div>回答：{{os}}</div>
+
+        <input type="checkbox" v-model="changeColor">←ここにチェックを入れると…
+        <p :class="{change: changeColor}">この文字の色が変わります</p>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.min.js"></script>
+    <script>
+    new Vue({
+        el: '#app',
+        data: {
+            os:[],
+            changeColor: true,
+        }
+    })
+    </script>
+</body>
+</html>
